@@ -19,21 +19,22 @@
             </div>
             <div class="header-bottom">
                 <div class="header-search">
-                    <input class="search-input" type="search" placeholder="Sök produkt">
+                    <form action="search.html" method="GET">
+                        <input class="search-input" name="q" type="search" placeholder="Sök produkt">
+                    </form>
                 </div>
                 <div class="header-icons">
                     <a href="#"><i class="bi bi-heart-fill"></i></a>
-                    <a href="#"><i class="bi bi-basket2-fill"></i></a>
+                    <a href="checkout.html"><i class="bi bi-basket2-fill"></i></a>
                 </div>
             </div>
         </div>
         <nav class="main-nav">
             <div class="container nav-container">
                 <ul>
-                    <li><a href="#">Nyheter</a></li>
-                    <li><a href="#">Bästsäljare</a></li>
-                    <li><a href="#">Kvinnor</a></li>
-                    <li><a href="#">Män</a></li>
+                    <li><a href="#">Kläder</a></li>
+                    <li><a href="#">Accessoarer</a></li>
+                    <li><a href="#">Skor</a></li>
                 </ul>
             </div>
         </nav>
@@ -54,15 +55,15 @@
         <section class="spots-section">
             <div class="spots-grid">
                 <a href="#" class="spot">
-                    <img src="img/bild.png" alt="Spot kampanj">
+                    <div class="spot-img-placeholder"></div>
                     <div class="spot-content">Lorem ipsum dolor</div>
                 </a>
                 <a href="#" class="spot">
-                    <img src="img/bild.png" alt="Spot kampanj">
+                    <div class="spot-img-placeholder"></div>
                     <div class="spot-content">Lorem ipsum dolor</div>
                 </a>
                 <a href="#" class="spot">
-                    <img src="img/bild.png" alt="Spot kampanj">
+                    <div class="spot-img-placeholder"></div>
                     <div class="spot-content">Lorem ipsum dolor</div>
                 </a>
             </div>
@@ -70,88 +71,8 @@
 
 
         <section class="product-section">
-            <div class="product-grid">
-
-                <a href="product-details.html" class="product-card">
-                    <img src="img/bild.png" alt="Svart T-shirt">
-                    <div class="product-info">
-                        <div>
-                            <h3>Svart T-Shirt</h3>
-                            <p class="brand">Levis</p>
-                        </div>
-                        <p class="price">199 SEK</p>
-                    </div>
-                </a>
-                <a href="product-details.html" class="product-card">
-                    <img src="img/bild.png" alt="Svart T-shirt">
-                    <div class="product-info">
-                        <div>
-                            <h3>Svart T-Shirt</h3>
-                            <p class="brand">Levis</p>
-                        </div>
-                        <p class="price">199 SEK</p>
-                    </div>
-                </a>
-                <a href="product-details.html" class="product-card">
-                    <img src="img/bild.png" alt="Svart T-shirt">
-                    <div class="product-info">
-                        <div>
-                            <h3>Svart T-Shirt</h3>
-                            <p class="brand">Levis</p>
-                        </div>
-                        <p class="price">199 SEK</p>
-                    </div>
-                </a>
-                <a href="product-details.html" class="product-card">
-                    <img src="img/bild.png" alt="Svart T-shirt">
-                    <div class="product-info">
-                        <div>
-                            <h3>Svart T-Shirt</h3>
-                            <p class="brand">Levis</p>
-                        </div>
-                        <p class="price">199 SEK</p>
-                    </div>
-                </a>
-                <a href="product-details.html" class="product-card">
-                    <img src="img/bild.png" alt="Svart T-shirt">
-                    <div class="product-info">
-                        <div>
-                            <h3>Svart T-Shirt</h3>
-                            <p class="brand">Levis</p>
-                        </div>
-                        <p class="price">199 SEK</p>
-                    </div>
-                </a>
-                <a href="product-details.html" class="product-card">
-                    <img src="img/bild.png" alt="Svart T-shirt">
-                    <div class="product-info">
-                        <div>
-                            <h3>Svart T-Shirt</h3>
-                            <p class="brand">Levis</p>
-                        </div>
-                        <p class="price">199 SEK</p>
-                    </div>
-                </a>
-                <a href="product-details.html" class="product-card">
-                    <img src="img/bild.png" alt="Svart T-shirt">
-                    <div class="product-info">
-                        <div>
-                            <h3>Svart T-Shirt</h3>
-                            <p class="brand">Levis</p>
-                        </div>
-                        <p class="price">199 SEK</p>
-                    </div>
-                </a>
-                <a href="product-details.html" class="product-card">
-                    <img src="img/bild.png" alt="Svart T-shirt">
-                    <div class="product-info">
-                        <div>
-                            <h3>Svart T-Shirt</h3>
-                            <p class="brand">Levis</p>
-                        </div>
-                        <p class="price">199 SEK</p>
-                    </div>
-                </a>
+            <div id="product-grid" class="product-grid">
+                <!-- Products will be injected here -->
             </div>
         </section>
     </main>
@@ -184,6 +105,13 @@
                             <li><a href="#">Mitt Konto</a></li>
                         </ul>
                     </div>
+                    <div class="footer-col">
+                        <h4>Kundtjänst</h4>
+                        <ul>
+                            <li><a href="#">Returnpolicy</a></li>
+                            <li><a href="#">Integritetspolicy</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="footer-bottom">
                     &copy; Freaky Fashion
@@ -191,6 +119,64 @@
             </div>
         </div>
     </footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load Hero
+            try {
+                const heroRes = await fetch('/api/hero');
+                const hero = await heroRes.json();
+                if (hero) {
+                    const heroSec = document.querySelector('.hero');
+                    heroSec.innerHTML = `
+                        <div class="hero-image-placeholder" style="background-image: url('${hero.image_url}'); background-size: cover; background-position: center;"></div>
+                        <div class="hero-content">
+                            <h2>${hero.title}</h2>
+                            <p>${hero.description}</p>
+                        </div>
+                    `;
+                }
+            } catch (err) {}
+
+            // Load Spots
+            try {
+                const spotsRes = await fetch('/api/spots');
+                const spots = await spotsRes.json();
+                const grid = document.querySelector('.spots-grid');
+                if (spots.length > 0) {
+                    grid.innerHTML = spots.map(s => `
+                        <a href="${s.link_url || '#'}" class="spot">
+                            <div class="spot-img-placeholder" style="background-image: url('${s.image_url}');"></div>
+                            <div class="spot-content">${s.title}</div>
+                        </a>
+                    `).join('');
+                }
+            } catch (err) {}
+
+            // Load Products
+            try {
+                const prodRes = await fetch('/api/products?limit=8');
+                const products = await prodRes.json();
+                const grid = document.getElementById('product-grid');
+                grid.innerHTML = products.map(p => `
+                    <a href="product-details.html?slug=${p.slug}" class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="${p.image_url}" alt="${p.name}">
+                            <button class="wishlist-btn" aria-label="Spara till favoriter"><i class="bi bi-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <h3>${p.name}</h3>
+                                <p class="brand">${p.brand || ''}</p>
+                            </div>
+                            <p class="price">${p.price} SEK</p>
+                        </div>
+                    </a>
+                `).join('');
+            } catch (err) {}
+        });
+    </script>
 </body>
 
 </html>

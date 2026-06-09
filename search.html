@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sökresultat | Freaky Fashion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html"><img
+                        src="https://docs.pingidentity.com/connectors/_images/connector-logos/google-hires-logo.png"
+                        alt="Freaky Fashion" class="logo-img"></a>
+            </div>
+            <div class="header-bottom">
+                <div class="header-search">
+                    <form action="search.html" method="GET">
+                        <input class="search-input" name="q" type="search" placeholder="Sök produkt">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container nav-container">
+                <ul>
+                    <li><a href="#">Kläder</a></li>
+                    <li><a href="#">Accessoarer</a></li>
+                    <li><a href="#">Skor</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 id="search-title">Sökresultat</h1>
+        <p id="search-count"></p>
+
+        <section class="product-section">
+            <div id="product-grid" class="product-grid">
+                <!-- Search results will be injected here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            &copy; Freaky Fashion
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+
+            if (query) {
+                document.getElementById('search-title').innerText = `Sökresultat för "${query}"`;
+
+                try {
+                    const response = await fetch(`/api/products?q=${encodeURIComponent(query)}`);
+                    const products = await response.json();
+
+                    document.getElementById('search-count').innerText = `Hittade ${products.length} produkter`;
+
+                    const grid = document.getElementById('product-grid');
+                    grid.innerHTML = products.map(p => `
+                        <a href="product-details.html?slug=${p.slug}" class="product-card">
+                            <img src="${p.image_url}" alt="${p.name}">
+                            <div class="product-info">
+                                <div>
+                                    <h3>${p.name}</h3>
+                                    <p class="brand">${p.brand || ''}</p>
+                                </div>
+                                <p class="price">${p.price} SEK</p>
+                            </div>
+                        </a>
+                    `).join('');
+                } catch (err) {
+                    console.error('Search failed:', err);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

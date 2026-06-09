@@ -137,22 +137,42 @@ img {
 
 .spots-grid {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
 .spot {
     position: relative;
-    width: 33.333%;
-    border: 1px solid #cccccc;
-    display: block;
-    color: #333333;
+    flex: 1;
+    min-width: 250px;
+    height: 300px;
+    overflow: hidden;
+    color: white !important;
+    text-decoration: none;
+    border: none;
 }
 
-.spot img {
+.spot-img-placeholder {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.spot:hover .spot-img-placeholder {
+    transform: scale(1.05);
+}
+
+.spot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3); /* Overlay to make text readable */
+    z-index: 1;
 }
 
 .spot-content {
@@ -163,7 +183,12 @@ img {
     font-weight: bold;
     font-size: 24px;
     text-align: center;
-    width: 100%;
+    width: 90%;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    pointer-events: none;
 }
 
 
@@ -179,30 +204,62 @@ img {
     border: 1px solid #cccccc;
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.product-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5; /* Consistent aspect ratio */
+    overflow: hidden;
 }
 
 .product-card img {
     width: 100%;
-    height: 250px;
-    object-fit: contain;
-    border-bottom: 1px solid #cccccc;
-    padding: 15px;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wishlist-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: #333;
+    z-index: 1;
+}
+
+.wishlist-btn:hover {
+    background: #f0f0f0;
+}
+
+.wishlist-btn i {
+    font-size: 20px;
 }
 
 .product-info {
     padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-grow: 1;
 }
 
 .product-info h3 {
     margin: 0;
     font-size: 16px;
+    font-weight: normal;
 }
 
 .product-info .brand {
-    margin: 4px 0 0 0;
+    margin: 4px 0 10px 0;
     font-size: 13px;
     color: #666666;
 }
@@ -210,6 +267,7 @@ img {
 .product-info .price {
     margin: 0;
     font-weight: bold;
+    font-size: 16px;
 }
 
 
