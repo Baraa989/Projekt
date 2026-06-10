@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS Products;
 DROP TABLE IF EXISTS Hero;
 DROP TABLE IF EXISTS Categories;
 
-CREATE TABLE Categories (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL);
-CREATE TABLE Products (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, brand TEXT, description TEXT, price INTEGER, image_url TEXT, slug TEXT UNIQUE, category_id INTEGER, FOREIGN KEY (category_id) REFERENCES Categories(id));
+CREATE TABLE Categories (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, image_url TEXT);
+CREATE TABLE Products (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, brand TEXT, description TEXT, price INTEGER, image_url TEXT, sku TEXT, slug TEXT UNIQUE, category_id INTEGER, FOREIGN KEY (category_id) REFERENCES Categories(id));
 CREATE TABLE Hero (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, image_url TEXT);
 CREATE TABLE Spots (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, image_url TEXT, link_url TEXT);
 
@@ -29,7 +29,7 @@ INSERT INTO Products (name, brand, price, image_url, slug, description) VALUES
 INSERT INTO Spots (title, image_url, link_url) VALUES 
 ('Sommarens Favoriter', 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400', '#'),
 ('Skor & Väskor', 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400', '#'),
-('Accessoarer', 'https://images.unsplash.com/photo-1576053139778-7e32f2ae3cf4?w=400', '#');
+('Accessoarer', 'https://images.unsplash.com/photo-1492707892479-7bc2d5a367d7?w=500', '#');
 `;
 
 db.exec(sql);

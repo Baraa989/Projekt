@@ -130,7 +130,7 @@ img {
 
 
 .spots-section {
-    display: none;
+    display: block;
     margin-bottom: 30px;
 }
 
