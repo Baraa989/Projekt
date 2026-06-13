@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration: Ny produkt | Freaky Fashion</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="admin-layout">
+    <header class="admin-header">
+        <h1>Administration</h1>
+    </header>
+    
+    <div class="admin-main">
+        <aside class="admin-sidebar">
+            <ul>
+                <li><a href="/admin/products">Produkter</a></li>
+                <li><a href="/admin/categories">Kategorier</a></li>
+            </ul>
+        </aside>
+        
+        <main class="admin-content">
+            <h2>Ny produkt</h2>
+            
+            <form action="/api/products" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Namn</label>
+                    <input type="text" name="name" required maxlength="25" placeholder="Ange namn">
+                </div>
+                
+                <div class="form-group">
+                    <label>Beskrivning</label>
+                    <textarea name="description" placeholder="Ange beskrivning"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Bild</label>
+                    <input type="file" name="image" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Märke</label>
+                    <input type="text" name="brand">
+                </div>
+                
+                <div class="form-group">
+                    <label>SKU</label>
+                    <input type="text" name="sku" placeholder="Ange SKU">
+                </div>
+                
+                <div class="form-group">
+                    <label>Pris</label>
+                    <input type="number" name="price">
+                </div>
+                
+                <div class="form-group">
+                    <label>Kategori</label>
+                    <select name="category_id" id="category-select" required>
+                        <option value="">Välj kategori</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-primary">Lägg till</button>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        fetch('/api/categories')
+            .then(res => res.json())
+            .then(categories => {
+                const select = document.getElementById('category-select');
+                categories.forEach(cat => {
+                    const opt = document.createElement('option');
+                    opt.value = cat.id;
+                    opt.textContent = cat.name;
+                    select.appendChild(opt);
+                });
+            });
+    </script>
+</body>
+</html>

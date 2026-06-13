@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration: Ny kategori | Freaky Fashion</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="admin-layout">
+    <header class="admin-header">
+        <h1>Administration</h1>
+    </header>
+    
+    <div class="admin-main">
+        <aside class="admin-sidebar">
+            <ul>
+                <li><a href="/admin/products">Produkter</a></li>
+                <li><a href="/admin/categories">Kategorier</a></li>
+            </ul>
+        </aside>
+        
+        <main class="admin-content">
+            <h2>Ny kategori</h2>
+            
+            <form action="/api/categories" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Namn</label>
+                    <input type="text" name="name" required maxlength="25" placeholder="Ange namn">
+                </div>
+                
+                <div class="form-group">
+                    <label>Bild</label>
+                    <input type="file" name="image" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Lägg till</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration: Lista kategorier | Freaky Fashion</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="admin-layout">
+    <header class="admin-header">
+        <h1>Administration</h1>
+    </header>
+    
+    <div class="admin-main">
+        <aside class="admin-sidebar">
+            <ul>
+                <li><a href="/admin/products">Produkter</a></li>
+                <li><a href="/admin/categories" style="text-decoration: underline;">Kategorier</a></li>
+            </ul>
+        </aside>
+        
+        <main class="admin-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Kategorier</h2>
+                <a href="/admin/categories/new" class="btn-primary">Ny kategori</a>
+            </div>
+            
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #ddd; text-align: left;">
+                        <th style="padding: 10px; border: 1px solid #ccc;">Namn</th>
+                    </tr>
+                </thead>
+                <tbody id="category-list">
+                    <!-- Data loaded via JS -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script>
+        fetch('/api/categories')
+            .then(res => res.json())
+            .then(categories => {
+                const tbody = document.getElementById('category-list');
+                tbody.innerHTML = categories.map(c => `
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">${c.name}</td>
+                    </tr>
+                `).join('');
+            });
+    </script>
+</body>
+</html>
