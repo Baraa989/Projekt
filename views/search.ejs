@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+
+<main class="container">
+    <h1>Sökresultat för "<%= query %>"</h1>
+    <p>Hittade <%= products.length %> produkter</p>
+
+    <section class="product-section mt-4">
+        <div id="product-grid" class="product-grid">
+            <% if (products.length > 0) { %>
+                <% products.forEach(product => { %>
+                    <%- include('partials/product-card', { product }) %>
+                <% }) %>
+            <% } else { %>
+                <p>Inga produkter matchade din sökning.</p>
+            <% } %>
+        </div>
+    </section>
+</main>
+
+<%- include('partials/footer') %>

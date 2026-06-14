@@ -1,0 +1,13 @@
+<a href="/product-details.html?slug=<%= product.slug %>" class="product-card">
+    <div class="product-img-wrapper">
+        <img src="<%= product.image_url %>" alt="<%= product.name %>">
+        <button class="wishlist-btn" aria-label="Spara till favoriter"><i class="bi bi-heart"></i></button>
+    </div>
+    <div class="product-info">
+        <div>
+            <h3><%= product.name %></h3>
+            <p class="brand text-muted small"><%= product.brand || '' %></p>
+        </div>
+        <p class="price"><%= product.price %> SEK</p>
+    </div>
+</a>

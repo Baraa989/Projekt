@@ -1,0 +1,58 @@
+<%- include('partials/header') %>
+
+<main class="container checkout-container">
+    <h1>Kassa</h1>
+    <div class="checkout-grid">
+        <section class="checkout-form">
+            <h2>Kontaktinformation</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="email">E-postadress</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <h2 class="mt-4">Leveransadress</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstname">Förnamn</label>
+                        <input type="text" id="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Efternamn</label>
+                        <input type="text" id="lastname" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Adress</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="zip">Postnummer</label>
+                        <input type="text" id="zip" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Ort</label>
+                        <input type="text" id="city" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-4" style="width: 100%;">Slutför köp</button>
+            </form>
+        </section>
+
+        <aside class="order-summary">
+            <h2>Din order</h2>
+            <div class="summary-items">
+                <p>Produkterna visas här vid en riktig kassa.</p>
+            </div>
+            <hr>
+            <div class="summary-total">
+                <span>Totalt</span>
+                <span>0 SEK</span>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

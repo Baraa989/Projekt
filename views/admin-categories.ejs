@@ -31,24 +31,15 @@
                         <th style="padding: 10px; border: 1px solid #ccc;">Namn</th>
                     </tr>
                 </thead>
-                <tbody id="category-list">
-                    <!-- Data loaded via JS -->
+                <tbody>
+                    <% categories.forEach(c => { %>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;"><%= c.name %></td>
+                    </tr>
+                    <% }) %>
                 </tbody>
             </table>
         </main>
     </div>
-
-    <script>
-        fetch('/api/categories')
-            .then(res => res.json())
-            .then(categories => {
-                const tbody = document.getElementById('category-list');
-                tbody.innerHTML = categories.map(c => `
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ccc;">${c.name}</td>
-                    </tr>
-                `).join('');
-            });
-    </script>
 </body>
 </html>

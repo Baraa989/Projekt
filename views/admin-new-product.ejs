@@ -55,28 +55,17 @@
                 
                 <div class="form-group">
                     <label>Kategori</label>
-                    <select name="category_id" id="category-select" required>
+                    <select name="category_id" required>
                         <option value="">Välj kategori</option>
+                        <% categories.forEach(cat => { %>
+                        <option value="<%= cat.id %>"><%= cat.name %></option>
+                        <% }) %>
                     </select>
                 </div>
                 
-                <button type="submit" class="btn-primary">Lägg till</button>
+                <button type="submit" class="btn btn-primary mt-3">Lägg till produkt</button>
             </form>
         </main>
     </div>
-
-    <script>
-        fetch('/api/categories')
-            .then(res => res.json())
-            .then(categories => {
-                const select = document.getElementById('category-select');
-                categories.forEach(cat => {
-                    const opt = document.createElement('option');
-                    opt.value = cat.id;
-                    opt.textContent = cat.name;
-                    select.appendChild(opt);
-                });
-            });
-    </script>
 </body>
 </html>
