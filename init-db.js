@@ -29,7 +29,7 @@ INSERT INTO Products (name, brand, price, image_url, slug, description) VALUES
 INSERT INTO Spots (title, image_url, link_url) VALUES 
 ('Sommarens Favoriter', 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400', '#'),
 ('Skor & Väskor', 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400', '#'),
-('Accessoarer', 'https://images.unsplash.com/photo-1492707892479-7bc2d5a367d7?w=500', '#');
+('Accessoarer', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500', '#');
 `;
 
 db.exec(sql);
